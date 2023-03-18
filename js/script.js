@@ -1,14 +1,23 @@
 
 //------------- handle search button-----------
 const searchBook = () => {
-  const searchField = document.getElementById("search-field");
+  const searchField = document.getElementById("search-input");
   const searchText = searchField.value;
+
+  // validate input field
+  if(!searchText) {
+    alert("Please enter a valid name.");
+    return;
+  }
 
   // ----------load data----------
   const url = `https://openlibrary.org/search.json?q=${searchText}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displaySearchResult(data.docs));
+    .then((data) => {
+      console.log(data)
+      displaySearchResult(data.docs)
+    });
 };
 
 // ----------display search result data----------

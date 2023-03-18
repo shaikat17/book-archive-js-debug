@@ -18,6 +18,8 @@ const searchBook = () => {
       // console.log(data.docs)
       displaySearchResult(data.docs)
     });
+
+    searchField.value = '';
 };
 
 // ----------display search result data----------
@@ -26,11 +28,18 @@ const displaySearchResult = (myBooks) => {
   const searchResult = document.getElementById("search-result");
   searchResult.innerText = "";
 
+  const totalBook = document.getElementById('totalBookAmount')
 
-  const books = myBooks;
-  console.log(books)
+  let totalBooks = myBooks.length
+
+  totalBook.innerText = totalBooks;
+
+  // console.log(totalBooks)
+
+  const books = myBooks.slice(0,15);
+  // console.log(books)
   books.forEach((book) => {
-    console.log(book);
+    // console.log(book);
     const div = document.createElement("div");
     div.classList.add("col-sm-1", "col-md-4");
     div.innerHTML = `
